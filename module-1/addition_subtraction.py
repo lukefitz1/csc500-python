@@ -1,0 +1,6 @@
+print('Enter first number: ', end = ' ')
+num1 = int(input())
+print('Enter second number: ', end = ' ')
+num2 = int(input())
+print('Sum of the 2 numbers: ', num1 + num2)
+print('Difference of the 2 numbers: ', num1 - num2)

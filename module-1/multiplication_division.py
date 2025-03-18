@@ -1,0 +1,6 @@
+print('Enter first number: ', end = ' ')
+num1 = int(input())
+print('Enter second number: ', end = ' ')
+num2 = int(input())
+print('Product of the 2 numbers: ', num1 * num2)
+print('Division of the 2 numbers: ', num1 / num2)
