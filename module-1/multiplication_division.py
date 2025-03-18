@@ -1,6 +1,6 @@
 print('Enter first number: ', end = ' ')
-num1 = int(input())
+num1 = float(input())
 print('Enter second number: ', end = ' ')
-num2 = int(input())
+num2 = float(input())
 print('Product of the 2 numbers: ', num1 * num2)
 print('Division of the 2 numbers: ', num1 / num2)
