@@ -5,7 +5,7 @@ print("Item 1")
 print("Enter the item name:")
 item1_name = str(input())
 print("Enter the item price:")
-item1_price = int(input())
+item1_price = float(input())
 print("Enter the item quantity:")
 item1_qty = int(input())
 
@@ -20,7 +20,7 @@ print("Item 2")
 print("Enter the item name:")
 item2_name = str(input())
 print("Enter the item price:")
-item2_price = int(input())
+item2_price = float(input())
 print("Enter the item quantity:")
 item2_qty = int(input())
 
@@ -34,4 +34,9 @@ newItem2Total = newItem2.price * newItem2.quantity
 print('TOTAL COST')
 newItem1.print_item_cost()
 newItem2.print_item_cost()
-print('Total: ${}'.format(newItem1Total + newItem2Total))
+
+# Print total cost, remove decimals when they are unnecessary
+if newItem1Total == int(newItem1Total) and newItem2Total == int(newItem2Total):
+    print('Total: ${}'.format(int(newItem1Total) + int(newItem2Total)))
+else:
+    print('Total: ${:.2f}'.format(newItem1Total + newItem2Total))
