@@ -72,6 +72,14 @@ class ShoppingCart:
         # Adds an item to cart_items list. Has parameter ItemToPurchase. Does not return anything.
         self.cart_items.append(ItemToPurchase)
 
+    def get_item(self, item_name):
+        # Retrieves an item by name from cart.
+        for item in self.cart_items:
+            if item.name == item_name:
+                return item
+            else:
+                print("Item not found in cart. Nothing modified.")
+
     def remove_item(self, item_name):
         # Removes item from cart_items list. Has a string (an item's name) parameter. Does not return anything.
         # If item name cannot be found, output this message: Item not found in cart. Nothing removed.
