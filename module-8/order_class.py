@@ -3,6 +3,7 @@ class ItemToPurchase:
         self.name = "none"
         self.price = 0
         self.quantity = 0
+        self.description = ""
 
     def print_item_cost(self):
         # Print item cost, remove decimals when they are unnecessary

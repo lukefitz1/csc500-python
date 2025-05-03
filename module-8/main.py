@@ -1,42 +1,65 @@
 from order_class import ItemToPurchase
+from shopping_cart import ShoppingCart
 
-# Get first item's info
-print("Item 1")
-print("Enter the item name:")
-item1_name = str(input())
-print("Enter the item price:")
-item1_price = float(input())
-print("Enter the item quantity:")
-item1_qty = int(input())
+def print_menu(cart):
+    print("MENU")
+    print("a - Add item to cart")
+    print("r - Remove item from cart")
+    print("c - Change item quantity")    
+    print("i - Output items' descriptions")
+    print("o - Output shopping cart")
+    print("q - Quit")
+    print("Choose an option:")
 
-newItem1 = ItemToPurchase()
-newItem1.name = item1_name
-newItem1.price = item1_price
-newItem1.quantity = item1_qty
-newItem1Total = newItem1.price * newItem1.quantity
+print("Enter customer's name:")
+name = str(input())
+print("Enter today's date:")
+date = str(input())
+cart = ShoppingCart(name, date)
+cart.print_customer_date()
+print("\n")
 
-# Get second item's info
-print("Item 2")
-print("Enter the item name:")
-item2_name = str(input())
-print("Enter the item price:")
-item2_price = float(input())
-print("Enter the item quantity:")
-item2_qty = int(input())
+print_menu(cart)
+user_input = str(input())
+while(user_input != "q"):
+    if(user_input == "a"):
+        print("ADD ITEM TO CART")
+        print("Enter the item name:")
+        item_name = str(input())
+        print("Enter the item description:")
+        item_desc = str(input())
+        print("Enter the item price:")
+        item_price = float(input())
+        print("Enter the item quantity:")
+        item_qty = int(input())
 
-newItem2 = ItemToPurchase()
-newItem2.name = item2_name
-newItem2.price = item2_price
-newItem2.quantity = item2_qty
-newItem2Total = newItem2.price * newItem2.quantity
+        newItem = ItemToPurchase()
+        newItem.name = item_name
+        newItem.price = item_price
+        newItem.quantity = item_qty
+        newItem.description = item_desc
+        newItem1Total = newItem.price * newItem.quantity
+        cart.add_item(newItem)
+    elif(user_input == "r"):
+        print("REMOVE ITEM FROM CART")
+        print("Enter name of item to remove:")
+        item_name = str(input())
+        cart.remove_item(item_name)
+    elif(user_input == "c"):
+        print("CHANGE ITEM QUANTITY")
+        print("Enter the item name:")
+        item_name = str(input())
+        item = cart.get_item(item_name)
 
-# Print final output
-print('TOTAL COST')
-newItem1.print_item_cost()
-newItem2.print_item_cost()
-
-# Print total cost, remove decimals when they are unnecessary
-if newItem1Total == int(newItem1Total) and newItem2Total == int(newItem2Total):
-    print('Total: ${}'.format(int(newItem1Total) + int(newItem2Total)))
-else:
-    print('Total: ${:.2f}'.format(newItem1Total + newItem2Total))
+        if item != None:
+            print("Enter updated quantity:")
+            new_quantity = int(input())
+            item.quantity = new_quantity
+            cart.modify_item(item)
+    elif(user_input == "i"):
+        cart.print_descriptions()
+    elif(user_input == "o"):
+        cart.print_total()
+    
+    print_menu(cart)
+    user_input = str(input())
